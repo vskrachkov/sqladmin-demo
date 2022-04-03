@@ -25,7 +25,13 @@ admin = Admin(app, engine)
 
 
 class UserAdmin(ModelAdmin, model=User):
+    icon = "fa-solid fa-user"
     column_list = [User.id, User.name]
+    column_labels = dict(id="ID", name="Name")
+    column_searchable_list = [User.name]
+    column_sortable_list = [User.id, User.name]
+    page_size = 25
+    page_size_options = [50, 100]
 
 
 admin.register_model(UserAdmin)
